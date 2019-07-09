@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\simple_rabbitmq_eft.Database\simple_rabbitmq_eft.Database.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Rabbitmq.Client" Version="5.1.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+</Project>
