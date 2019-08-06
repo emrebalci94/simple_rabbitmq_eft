@@ -12,8 +12,10 @@ namespace simple_rabbitmq_eft.Consumer
     {
         static void Main(string[] args)
         {
+            var host = Environment.GetEnvironmentVariable("host") ?? "localhost";
+            Console.WriteLine(host);
             EftContext context = new EftContext();
-            var factory = new ConnectionFactory() { HostName = "localhost", UserName = "admin", Password = "123456" };
+            var factory = new ConnectionFactory() { HostName = host, UserName = "admin", Password = "123456" };
             using (IConnection connection = factory.CreateConnection())
             using (IModel channel = connection.CreateModel())
             {
@@ -33,7 +35,7 @@ namespace simple_rabbitmq_eft.Consumer
                     consumer: consumer); //TODO: Hangi consumer kullanılacak.
 
                 Console.WriteLine("Eft kuyruğuna bağlantı başarılı. Dinleniyor...");
-                Console.ReadKey();
+                Console.ReadLine();
             }
 
         }

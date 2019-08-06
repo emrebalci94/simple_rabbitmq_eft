@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using simple_rabbitmq_eft.Database;
@@ -14,8 +16,9 @@ namespace simple_rabbitmq_eft.Api.Helpers
     {
         public static void SendMoney(SendingEftModel model)
         {
+            var hostName = Environment.GetEnvironmentVariable("host") ?? "localhost";
             //RabbitMQ bağlantısı için
-            var factory = new ConnectionFactory() { HostName = "localhost", UserName = "admin", Password = "123456" };
+            var factory = new ConnectionFactory() { HostName = hostName, UserName = "admin", Password = "123456" };
             //Channel yaratmak için
             using (IConnection connection = factory.CreateConnection())
             using (IModel channel = connection.CreateModel())

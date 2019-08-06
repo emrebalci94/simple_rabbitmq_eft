@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web_api:
+    build: 
+        context: "."
+        dockerfile: "Dockerfile"
+    container_name: simple_eft_api_compose
+    links:
+        - "myrabbit:myrabbit"
+    ports:
+      - "8080:80"
+  consumer:
+    build: 
+        context: "."
+        dockerfile: "Dockerfile_Consumer"
+    container_name: simple_eft_consumer_compose
+    links:
+        - "myrabbit:myrabbit"
+    ports:
+      - "8081:80"
+  myrabbit:
+    image: rabbitmq:3-management
+    #envaraiblerın felan tanımlanması lazım.
