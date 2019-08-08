@@ -14,5 +14,6 @@ FROM mcr.microsoft.com/dotnet/core/runtime:2.2
 WORKDIR /app
 #build-env aliası veriyoruz yukarıda ordan çağırıyoruz: Orda oluşturulan dosyaları /app/out klasörünü kopyala demiş oluyoruz.
 COPY --from=build-env /app/out .
+#./simple_rabbitmq_eft.Consumer/Database.json dosyasını /app klasörünün içine kopyalar.
 COPY ./simple_rabbitmq_eft.Consumer/Database.json .
 ENTRYPOINT ["dotnet" , "simple_rabbitmq_eft.Consumer.dll"]
